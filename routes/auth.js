@@ -16,6 +16,7 @@ router.post('/createUser',
   body("password", "Enter min 10 character").isLength({ max: 10 })
   ],
   async (req, res) => {
+    console.log('1');
     //Recived user data validation and sending bad request if validation has errors
     const result = validationResult(req);
     if (!result.isEmpty()) {
@@ -25,8 +26,10 @@ router.post('/createUser',
     try {
       //Checking Email alredy exist or not
       let user = await User.findOne({ email: req.body.email })
+      // console.log('1');
       if (user) {
         success = false
+        // console.log('2');
         return res.status(400).json({ success, "Error": "User with this email already exist" })
       }
       //Password hasing
@@ -48,7 +51,7 @@ router.post('/createUser',
       // Checking if Any error occured from server side
       console.log("User not Saved");
       success = false
-      return res.status(400).json(success, error)
+      return res.status(400).json(error)
     }
   })
 
