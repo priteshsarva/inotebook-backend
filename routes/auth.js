@@ -16,7 +16,7 @@ router.post('/createUser',
   body("password", "Enter min 10 character").isLength({ max: 10 })
   ],
   async (req, res) => {
-    console.log('1');
+    // console.log('1');
     //Recived user data validation and sending bad request if validation has errors
     const result = validationResult(req);
     if (!result.isEmpty()) {
