@@ -1,5 +1,6 @@
-require('dotenv').config();
+// require('dotenv').config();
 
+import 'dotenv/config'
 
 const Mongoose = require('mongoose'); 
 
